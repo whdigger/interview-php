@@ -4,7 +4,7 @@
 
 ### 1. [Общие вопросы](docs/GENERAL.MD)
 
-### 2. [OOP.MD](docs/OOP.MD)
+### 2. [OOP](docs/OOP.MD)
 
 ### 3. [Инфраструктура](docs/INFRASTRUCTURE.MD)
 
