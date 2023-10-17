@@ -2,18 +2,18 @@
 
 Набор вопросов и задач для разных уровней разработчиков собранный по разным тематикам.
 
-### 1. [Общие вопросы](docs/GENERAL.MD)
+### 1. [Общие вопросы](docs/ru/GENERAL.MD)
 
-### 2. [OOP](docs/OOP.MD)
+### 2. [OOP](docs/[ru](docs/ru/OOP.MD)
 
-### 3. [Инфраструктура](docs/INFRASTRUCTURE.MD)
+### 3. [Инфраструктура](docs/ru/INFRASTRUCTURE.MD)
 
-### 4. [Кеширование](docs/CACHE.MD)
+### 4. [Кеширование](docs/ru/CACHE.MD)
 
-### 5. [Протоколы и форматы данных](docs/PROTOCOL.MD)
+### 5. [Протоколы и форматы данных](docs/ru/PROTOCOL.MD)
 
-### 6. [Архитектура](docs/FARCHITECTURE.MD)
+### 6. [Архитектура](docs/ru/FARCHITECTURE.MD)
 
-### 7. [Базы данных](docs/DATABASE.MD)
+### 7. [Базы данных](docs/ru/DATABASE.MD)
 
-### 8. [Примеры](docs/EXAMPLE.MD)
+### 8. [Примеры](docs/ru/EXAMPLE.MD)
