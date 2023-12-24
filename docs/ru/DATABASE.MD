@@ -514,3 +514,5 @@ SELECT SUM(price) FROM orders JOIN time ON orders.date > time.date
 ### 41. Что такое партицирование
 
 Отделение используемых записей от старых, по разным таблицам на одном сервере
+
+[Назад](../../README.md)
