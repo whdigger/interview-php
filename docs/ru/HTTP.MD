@@ -117,10 +117,15 @@ v1/articles?title=Nokia&sort=+author,-dateTime&limit=100
 - DELETE - Delete
 3. HTTP code
 - Клиентские
+
 400 Bad request - для неправильного ввода клиентских данных
+
 403 Forbidden - доступ запрещён
+
 401 Unauthorized - не авторизован
+
 404 Not found - не найден
+
 4. Request, response
 - Json format
 
