@@ -209,4 +209,229 @@ echo $result;
 
 - Кэширование (Caching)
 
+### 12. Максимизировать свою прибыль, выбрав первый день для покупки одной акции и выбрав другой день в будущем для продажи этой акции
+
+```php
+# Вам дан массив цен, где prices[i] — цена акции на i-й день.
+# Вы хотите максимизировать свою прибыль, выбрав один день для покупки одной акции и
+# выбрав другой день в будущем для продажи этой акции.
+# Верните максимальную прибыль, которую вы можете получить от этой сделки.
+# Если вы не можете получить никакой прибыли, верните 0.
+#
+####### Пример 1 #######
+# Входящие данные: prices = [7,1,5,3,6,4]
+# Вывод: 5
+# Обьяснение: Купить на 2-ой день (цена = 1) и продать на 5-ый день (цена = 6), выгода = 6-1 = 5.
+# Обратите внимание, что покупка во 2-й день и продажа в 1-й день не разрешены,
+# потому что вы должны купить перед продажей.
+#
+####### Пример 2 #######
+# Входящие данные: prices = [7,6,4,3,1]
+# Вывод: 0
+# Обьяснение: В этом случае транзакции не совершаются, а максимальная прибыль = 0.
+
+// Implementation:
+
+/**
+ * @param Integer[] $prices
+ * @return Integer
+ */
+function maxProfit(int ...$prices): int {
+    $firstDay = PHP_INT_MAX;
+    $indexStart = 0;
+    foreach($prices as $index => $price) {
+        if ($firstDay > $price ) {
+            $firstDay = $price;
+            $indexStart = $index;
+        }
+    }
+
+    if ($firstDay == PHP_INT_MAX) {
+        return 0;
+    }
+
+    $benefit = 0;
+    for ($i = $indexStart + 1; $i < count($prices) - 1; $i++) {
+        $diff = $prices[$i] - $firstDay;
+        if ($benefit < $diff) {
+            $benefit = $diff;
+        }
+    }
+
+    return $benefit;
+}
+
+$testData = [
+    [
+        [7,1,5,3,6,4],
+        5,
+    ],
+    [
+        [7,6,4,3,1],
+        0,
+    ],
+];
+
+foreach ($testData as $i=>$case){
+    $expected = $case[1];
+    $actual = maxProfit(...$case[0]);
+    if($actual != $expected){
+        echo sprintf('Case %d failed'.PHP_EOL, $i);
+    } else{
+        echo sprintf('Case %d succeed'.PHP_EOL, $i);
+    }
+}
+```
+
+### 13. Футбольный тотализатор
+
+```php
+/*Тотализатор
+Есть футбольный тотализатор. Каждый участник делает ставку на результат матча (счет). После окончания матча происходит проверка: если человек угадал счет, система начисляет ему 2 балла; если человек угадывает только исход матча — 1 балл, и если не угадывает ничего — 0 баллов.
+Напишите функцию, которая возвращает словарь (или список) баллов выигранных участниками (юзер1:баллы_юзера1, юзер2:баллы_юзера2, ...). Функция принимает 2 аргумента:
+ставки нескольких участников в виде словаря/списка (юзер1:счет1, юзер2:счет2, ...)
+результат матча строкой (“3:4”)
+*/
+const MAX_SCORE = 2;
+const MED_SCORE = 1;
+const MIN_SCORE = 0;
+
+function calculateScores(array $bets, string $result): array 
+{
+ [$fistTeamResut, $seciondTeamResult] = explode(':', $result);
+ $scoreUserResult = [];
+ 
+ $resultMatch = $fistTeamResut <=> $seciondTeamResult;
+ 
+ foreach ($best as $user => $bet) {
+  [$betFistTeam, $betSeciondTeam] =explode(':', $bet);
+  
+  $betResultMatch = $betFistTeam <=> $betSeciondTeam;
+  
+  if ($betFistTeam === $fistTeamResut && $betSeciondTeam === $seciondTeamResult) {
+   $scoreUserResult[$user] = self::MAX_SCORE;
+  } elseif ($betResultMatch === $resultMatch) {
+   $scoreUserResult[$user] = self::MED_SCORE;
+  } else {
+   $scoreUserResult[$user] = self::MIN_SCORE;
+  }
+ }
+}
+```
+
+### 14. Сервис знакомств
+
+```php
+// Сервис знакомств, регистрация пользователей. После регистрации нужно отправить сообщение 'Privet' через SMS сообщение и на почту.
+ 
+class UserService
+{
+    public function __construct(){
+        
+    }
+    
+    public function register(UserDto $userDto): User {
+        // бизнес-логика регистрации
+        $user = $this->save($userDto);
+        
+        $event = new NotifyEvent($userDto);
+        $this->dipatcher->dispatch($event);
+        
+        return $user;
+    }
+ 
+    // Логика сохранения пользователя уже реализована и зашита в функции save
+    private function save($userDto): User {
+    }
+}
+
+class NotifyUser {
+    
+    public function __construct(EmailClient $emailClient, SmsClient $smsClient){
+        $this->emailClient = $emailClient;
+        $this->smsClient = $smsClient;
+    }
+    
+    public function onSendEmail(NotifyEvent $event) {
+        $userDto = $event->getValue();
+        
+        $this->emailClient->sendEmail($userDto->email, $userDto->message);
+    }
+    
+        
+    public function onSendSms(NotifyEvent $event) {
+        $userDto = $event->getValue();
+        
+        $this->smsClient->sendSms($userDto->phone, $userDto->countryCode, $userDto->message);
+    }
+}
+```
+
+### 15. Отправки в очередь различных сообщений
+
+```php
+/**
+ * Данная структура классов предназначена для отправки в очередь различных сообщений по статусу посылки
+ * Какие проблемы могут возникнуть и что можно улучшить в приведенном коде.
+ * 
+ * Применение принципов SOLID и паттернов - приветствуется. Результат рефакторинга нужно покрыть тестами.
+ */ 
+
+declare(strict_types=1);
+
+class Producer
+{
+    public function send($topic, $key, $body)
+    {
+        // Инфраструктурны код, производящий отправку сообщения
+        // коннект к Kafka, отправка сообщения и т.д.
+    }
+}
+
+//---------------------------
+
+final class ParcelSender
+{
+    public function __construct(private Producer $producer, private BodyProcessor $bodyProcessor ){
+    }
+    
+    
+     
+    public function send(ParcelMessage $parselMessage): void
+    {
+        // Сборка параметров сообщения из переданных template и data
+        //
+        $key = $this->data->getId();
+        $body = $bodyProcessor->process($template, $data);... // $template + $data
+         
+        $producer->send($this->topic, $key, $body);
+    }
+}
+
+enum Template
+{
+    case CREATED;
+    case SENDED;
+    case DELIVERED;
+}
+
+final class ParcelMessage
+{
+    protected $topic;
+
+    protected $data;
+    
+    public function setData(Parcel $data)
+    {
+        $this->data = $data;
+    }
+}
+
+
+//--- вызов в коде
+$parcelMessage = new ParcelMessage();
+$parcelMessage->setData($entityManager->getRepository('App:Parcel')->find(123));
+$parcelMessage->send("parcel.status", "created", "");
+```
+
 [Назад](../../../README.md)

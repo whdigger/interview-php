@@ -12,24 +12,26 @@
 
 ### 5. [Principle](docs/ru/PRINCIPLE.MD)
 
-### 6. [Архитектура](docs/ru/ARCHITECTURE.MD)
+### 6. [Patterns](docs/ru/PATTERNS.md)
 
-### 7. [Symfony](docs/ru/SYMFONY.MD)
+### 7. [Архитектура](docs/ru/ARCHITECTURE.MD)
 
-### 8. [Тестирование](docs/ru/TESTING.MD)
+### 8. [Symfony](docs/ru/SYMFONY.MD)
 
-### 9. [Инфраструктура](docs/ru/INFRASTRUCTURE.MD)
+### 9. [Тестирование](docs/ru/TESTING.MD)
 
-### 10. [HTTP](docs/ru/HTTP.MD)
+### 10. [Инфраструктура](docs/ru/INFRASTRUCTURE.MD)
 
-### 11. [Кеширование](docs/ru/CACHE.MD)
+### 11. [HTTP](docs/ru/HTTP.MD)
 
-### 12. [Балансировка](docs/ru/BALANCING.MD)
+### 12. [Кеширование](docs/ru/CACHE.MD)
 
-### 13. [Базы данных](docs/ru/DATABASE.MD)
+### 13. [Балансировка](docs/ru/BALANCING.MD)
 
-### 14. [Soft skill](docs/ru/SOFT_SKILL.MD)
+### 14. [Базы данных](docs/ru/DATABASE.MD)
 
-### 15. [Примеры PHP](docs/ru/example/PHP.MD)
+### 15. [Soft skill](docs/ru/SOFT_SKILL.MD)
 
-### 16. [Примеры SQL](docs/ru/example/SQL.MD)
+### 16. [Примеры PHP](docs/ru/example/PHP.MD)
+
+### 17. [Примеры SQL](docs/ru/example/SQL.MD)
